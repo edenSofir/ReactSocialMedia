@@ -10,5 +10,5 @@ export const Hello = async () => {
     return await response.json();*/
 }
 
-const domContainer = document.querySelector('#sample-container');
-ReactDOM.render( React.createElement(Hello , null ), domContainer);
+//const domContainer = document.querySelector('#sample-container');
+//ReactDOM.render( React.createElement(Hello , null ), domContainer);
