@@ -1,5 +1,5 @@
-const messages = require('../models/Messages');
-const posts = require('../models/Posts');
+const messages = require('./Messages');
+const posts = require('./Posts');
 const id_data = require('../JavaScript/id_data');
 
 class User{

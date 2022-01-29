@@ -1,4 +1,4 @@
-const id_data = require('../JavaScript/id_data');
+const id_data = require('./id_data');
 
 function find_user_by_email(email) {
     const user = id_data.users.find(user => user.email_address === email);

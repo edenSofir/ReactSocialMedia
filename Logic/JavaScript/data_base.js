@@ -2,7 +2,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const file_path = path.join(__dirname, '/SocialNetworkData.txt');
 const secret_jwt = "kjnkjnhkjnljn35213541dgvrf351" ;
-const id_data = require('../JavaScript/id_data');
+const id_data = require('./id_data');
 const user = require("../models/User");
 
 
