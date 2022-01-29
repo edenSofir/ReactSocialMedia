@@ -201,21 +201,23 @@ function get_all_users(req, res) {
     const current_token = auth_header && auth_header.split(" ")[1];
     if (!current_token) {
         res.status(400).send("the token is invalid");
+    } else {
+        jwt.verify(current_token, data_base.secret_jwt, async (err, user_payload) => {
+            if (err) {
+                res.status(400).send("token is invalid, please try again later");
+            } else {
+                const user = g_state.find_user_by_id(user_payload.user_id);
+                if (user.is_logon)
+                {
+                    res.status(status_codes.ACCEPTED);
+                    res.send(JSON.stringify(admin_services.get_all_users()));
+                }
+                else {
+                    res.status(status_codes.FORBIDDEN).send("You are not logg on ");
+                }
+            }
+        });
     }
-    jwt.verify(current_token, data_base.secret_jwt, async (err, user_payload) => {
-        if (err) {
-            res.status(400).send("token is invalid, please try again later");
-        } else {
-            const user = g_state.find_user_by_id(user_payload.user_id);
-            if(user.is_logon) {
-                res.status(status_codes.ACCEPTED);
-                res.send(JSON.stringify(admin_services.get_all_users()));
-            }
-            else{
-                res.status(status_codes.FORBIDDEN).send("You are not logg on ");
-            }
-        }
-    });
 }
 
 function send_message_to_all(req, res) {
