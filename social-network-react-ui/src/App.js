@@ -5,7 +5,7 @@ import { Hello } from './components/hello'
 
 
 
-function App() {
+const App = async function () {
 
   return (
     <div className="App">
