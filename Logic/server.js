@@ -41,7 +41,7 @@ app.use("/api/post", post_router);
 app.use("/api/message", message_router);
 app.use("/api/user", user_router);
 
-app.use(express.static(path.join(__dirname, '..', 'social-network-react-ui')));
+app.use(express.static(path.join(__dirname, 'UI')));
 app.listen(2718, () => {
 
     data_base.read_data_from_file().then(r => {

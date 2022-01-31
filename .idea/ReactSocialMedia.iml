@@ -8,5 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="react-dom-factories" level="application" />
   </component>
 </module>

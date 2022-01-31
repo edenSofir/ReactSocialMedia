@@ -1,55 +1,11 @@
-import React from "react";
 
-class UserItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handle_click = this.handle_click.bind(this);
-    }
-
-    handle_click() {
-        if (this.props.handle_delete) this.props.handle_delete(this.props.user.id);
-    }
-
-    render() {
-        return React.createElement(
-            'div',
-            { className: 'UserItem', 'data-id': this.props.user.id },
-            React.createElement(
-                'span',
-                null,
-                React.createElement('i', { onClick: this.handle_click, className: 'fa fa-times transparent' })
-            ),
-            React.createElement(
-                'span',
-                null,
-                this.props.user.name
-            )
-        );
-    }
-}
-
-class AddButton extends React.Component {
-    constructor(props) {
-        super(props);
-        this.handle_add = this.handle_add.bind(this);
-    }
-
-    handle_add() {
-        if (this.props.handle_add) this.props.handle_add();
-    }
-
-    render() {
-        return React.createElement(
-            'button',
-            { className: 'AddButton', onClick: this.handle_add },
-            'Add User'
-        );
-    }
-}
+const {AddButton} = require("./Button");
+const {UserItem} = require("./UserItem");
 
 const re_react_user_name = /^React/;
 
-export class UserList extends React.Component {
+class UserList extends React.Component {
+
     constructor(props) {
         super(props);
         this.handle_delete = this.handle_delete.bind(this);
@@ -63,9 +19,10 @@ export class UserList extends React.Component {
     }
 
     async fetch_users() {
-        const response = await fetch('/api/admin/user');
+        const response = await fetch('/api/users');
         if (response.status !== 200) throw new Error('Error while fetching users');
-        return await response.json();
+        const data = await response.json();
+        return data;
     }
 
     create_new_user_name(users) {
