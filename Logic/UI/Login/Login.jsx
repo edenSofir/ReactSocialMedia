@@ -1,21 +1,38 @@
-import React from 'react';
+class LoginUser extends React.Component
+{
+    constructor(props) {
+        super(props);
+    }
 
+    handle_Login(){
+        //TODO 1.RECIVE USERNAME AND PASSWORD
+        //TODO 2.POST HTTP REQ /api/user/login
+    }
 
+    handle_Register(){
+        //TODO:REDIRECT TO REGISTER.HTML
+    }
 
-export default function Login() {
-    return(
-        <form>
-            <label>
-                <p>Username</p>
-                <input type="text" />
-            </label>
-            <label>
-                <p>Password</p>
-                <input type="password" />
-            </label>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    )
+    render() {
+        return React.createElement(
+            'form',
+            null,
+            React.createElement(
+                'div',
+                null,
+                React.createElement(AddInputField,{name: 'Username:'})
+            ),
+            React.createElement(
+                'div',
+                null,
+                React.createElement(AddInputField,{name:'Password:'})
+            ),
+            React.createElement(
+                'div',
+                null,
+                React.createElement(AddButton,{ handle_add: this.handle_Login},'Login'),
+                React.createElement(AddButton,{ handle_add: this.handle_Register},'Register'))
+        )
+    }
 }
+
