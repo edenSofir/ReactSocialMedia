@@ -196,7 +196,6 @@ async function approve_user(req, res) {
 }
 
 function get_all_users(req, res) {
-
     const auth_header = req.headers["authorization"];
     const current_token = auth_header && auth_header.split(" ")[1];
     if (!current_token) {
@@ -209,8 +208,10 @@ function get_all_users(req, res) {
                 const user = g_state.find_user_by_id(user_payload.user_id);
                 if (user.is_logon)
                 {
+
                     res.status(status_codes.ACCEPTED);
                     res.send(JSON.stringify(admin_services.get_all_users()));
+
                 }
                 else {
                     res.status(status_codes.FORBIDDEN).send("You are not logg on ");

@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/edenSofir/SocialNetwork/issues"
   },
-  "homepage": "https://github.com/edenSofir/SocialNetwork#readme"
+  "homepage": "https://github.com/edenSofir/SocialNetwork#readme",
+  "devDependencies": {
+    "react": "^17.0.2"
+  }
 }

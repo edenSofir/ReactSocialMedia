@@ -1,5 +1,5 @@
 
-export class AddButton extends React.Component {
+class AddButton extends React.Component {
     constructor(props) {
         super(props);
         this.handle_add = this.handle_add.bind(this);

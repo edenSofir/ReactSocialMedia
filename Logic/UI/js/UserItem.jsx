@@ -1,5 +1,5 @@
 
-export class UserItem extends React.Component {
+class UserItem extends React.Component {
     constructor(props) {
         super(props);
         this.handle_click = this.handle_click.bind(this);

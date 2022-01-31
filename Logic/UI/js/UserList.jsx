@@ -1,7 +1,3 @@
-
-const {AddButton} = require("./Button");
-const {UserItem} = require("./UserItem");
-
 const re_react_user_name = /^React/;
 
 class UserList extends React.Component {
@@ -19,8 +15,8 @@ class UserList extends React.Component {
     }
 
     async fetch_users() {
-        const response = await fetch('/api/users');
-        if (response.status !== 200) throw new Error('Error while fetching users');
+        const response = await fetch('/api/admin/user');
+        if (response.status !== 202) throw new Error('Error while fetching users');
         const data = await response.json();
         return data;
     }
