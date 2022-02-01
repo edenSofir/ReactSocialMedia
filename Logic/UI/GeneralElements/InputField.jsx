@@ -11,8 +11,13 @@ class AddInputField extends React.Component {
 
     render() {
         return React.createElement(
-            'label',
-            { className: 'label',name},
+            'div',
+            null,
+            React.createElement(
+                'label',
+                {className: 'label'},
+                this.props.value
+            ),
             React.createElement(
                 'input',
                 {className: 'input'}

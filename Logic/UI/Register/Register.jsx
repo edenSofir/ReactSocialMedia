@@ -3,13 +3,9 @@ class LoginUser extends React.Component {
         super(props);
     }
 
-    handle_Login() {
+    handle_register_clicked() {
         //TODO 1.RECEIVE USERNAME AND PASSWORD
-        //TODO 2.POST HTTP REQ /api/user/login
-    }
-
-    handle_Register() {
-        //TODO:REDIRECT TO REGISTER.HTML
+        //TODO 2.POST HTTP REQ /api/admin/user (invokes the create_new_user method in admin_controller).
     }
 
     render() {
@@ -19,7 +15,12 @@ class LoginUser extends React.Component {
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddInputField, {value: 'Username:'})
+                React.createElement(AddInputField, {value: 'Full Name:'})
+            ),
+            React.createElement(
+                'div',
+                null,
+                React.createElement(AddInputField, {value: 'Email:'})
             ),
             React.createElement(
                 'div',
@@ -29,8 +30,7 @@ class LoginUser extends React.Component {
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddButton, {handle_add: this.handle_Login, value: 'Login'}),
-                React.createElement(AddButton, {handle_add: this.handle_Register, value: 'Register'})
+                React.createElement(AddButton, {handle_add: this.handle_register_clicked, value: 'Register'})
             )
         )
     }

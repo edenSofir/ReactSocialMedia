@@ -13,7 +13,7 @@ class AddButton extends React.Component {
         return React.createElement(
             'button',
             { className: 'AddButton', onClick: this.handle_add },
-            'Add User'
+            this.props.value
         );
     }
 }
