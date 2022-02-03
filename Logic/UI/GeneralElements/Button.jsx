@@ -2,17 +2,17 @@
 class AddButton extends React.Component {
     constructor(props) {
         super(props);
-        this.handle_add = this.handle_add.bind(this);
+        this.handle_clicked = this.handle_clicked.bind(this);
     }
 
-    handle_add() {
-        if (this.props.handle_add) this.props.handle_add();
+    handle_clicked() {
+        if (this.props.handle_clicked) this.props.handle_clicked();
     }
 
     render() {
         return React.createElement(
             'button',
-            { className: 'AddButton', onClick: this.handle_add },
+            { className: 'AddButton', onClick: this.handle_clicked },
             this.props.value
         );
     }

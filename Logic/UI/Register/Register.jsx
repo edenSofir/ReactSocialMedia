@@ -3,9 +3,29 @@ class LoginUser extends React.Component {
         super(props);
     }
 
-    handle_register_clicked() {
-        //TODO 1.RECEIVE USERNAME AND PASSWORD
-        //TODO 2.POST HTTP REQ /api/admin/user (invokes the create_new_user method in admin_controller).
+    async handle_register_clicked() {
+
+        const email = document.querySelector('#emailField').value;
+        const password = document.querySelector('#passwordField').value;
+        const full_name = document.querySelector('#fullNameField').value;
+
+        const response = await fetch('/api/admin/user', {
+            method: 'POST',
+            body: JSON.stringify({
+                full_name: full_name,
+                email: email,
+                password: password
+            }),
+            headers: {'Content-Type': 'application/json'}
+        });
+        //TODO: check why fetch throws exception on response 409
+        if (response.status === 200) {
+            //TODO: redirect to login
+        } else {
+            const err = await response.text();
+            alert(err);
+        }
+
     }
 
     render() {
@@ -15,22 +35,22 @@ class LoginUser extends React.Component {
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddInputField, {value: 'Full Name:'})
+                React.createElement(AddInputField, {value: 'Full Name:', idValue: 'fullNameField'})
             ),
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddInputField, {value: 'Email:'})
+                React.createElement(AddInputField, {value: 'Email:', idValue: 'emailField'})
             ),
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddInputField, {value: 'Password:'})
+                React.createElement(AddInputField, {value: 'Password:',idValue: 'passwordField'})
             ),
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddButton, {handle_add: this.handle_register_clicked, value: 'Register'})
+                React.createElement(AddButton, {handle_clicked: this.handle_register_clicked, value: 'Register'})
             )
         )
     }

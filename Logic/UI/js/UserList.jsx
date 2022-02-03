@@ -30,7 +30,7 @@ class UserList extends React.Component {
         }
     }
 
-    async handle_add() {
+    async handle_clicked() {
         const name = this.create_new_user_name(this.state.users);
         const response = await fetch('/api/users/', { method: 'POST',
             body: JSON.stringify({ name: name }),
@@ -75,7 +75,7 @@ class UserList extends React.Component {
             React.createElement(
                 'div',
                 null,
-                React.createElement(AddButton, { handle_add: this.handle_add })
+                React.createElement(AddButton, { handle_clicked: this.handle_clicked })
             )
         );
     }
